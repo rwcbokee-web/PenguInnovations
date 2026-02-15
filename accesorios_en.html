@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accessories – PenguInnovations: For a safer penguin</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:url("https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1974&auto=format&fit=crop")
+  no-repeat center center fixed;
+  background-size:cover;
+  color:#111;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(4px);
+  z-index:-1;
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:30px 10%;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-size:26px;
+  font-weight:600;
+}
+.logo img{width:42px;}
+
+.flags{
+  display:flex;
+  gap:8px;
+  margin-left:15px;
+}
+.flags img{
+  width:24px;
+  height:16px;
+  cursor:pointer;
+  border-radius:3px;
+  border:1px solid #ccc;
+}
+
+nav a{
+  margin-left:30px;
+  text-decoration:none;
+  color:#333;
+  font-weight:500;
+}
+
+section{padding:80px 10%;}
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:30px;
+}
+
+.category{
+  background:white;
+  border-radius:20px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.1);
+  padding:40px 20px;
+  text-align:center;
+  cursor:pointer;
+  transition:transform 0.3s;
+}
+.category:hover{transform:scale(1.05);}
+
+.subgroup{
+  display:none;
+  margin-top:30px;
+  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+}
+.subgroup.active{display:grid;}
+
+.card{
+  background:#f7f7f7;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 5px 20px rgba(0,0,0,0.08);
+  cursor:pointer;
+  transition:transform 0.3s;
+}
+.card:hover{transform:scale(1.05);}
+.card img{width:100%;display:block;}
+.card-content{text-align:center;padding:10px;}
+.card-content h4{font-size:16px;}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  z-index:1000;
+}
+.modal-content{
+  background:white;
+  margin:8% auto;
+  padding:20px;
+  border-radius:15px;
+  max-width:600px;
+  position:relative;
+}
+.modal-content img{width:100%;border-radius:15px;}
+.close{
+  position:absolute;
+  top:10px;
+  right:15px;
+  font-size:24px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo_pinguino.png">
+    PenguInnovations: For a safer penguin
+    <div class="flags">
+      <img src="es.png" onclick="location.href='accesorios_es.html'">
+      <img src="uk.png" onclick="location.href='accesorios_en.html'">
+    </div>
+  </div>
+
+  <nav>
+    <a href="index_en.html">Home</a>
+    <a href="accesorios_en.html">Accessories</a>
+    <a href="quienes_en.html">About Us</a>
+    <a href="proposito_en.html">Purpose</a>
+  </nav>
+</header>
+
+<section>
+<h2>Accessories</h2>
+
+<div class="categories">
+  <div class="category" onclick="toggle('helmets')">Helmets</div>
+  <div class="category" onclick="toggle('wings')">Hang Gliders</div>
+  <div class="category" onclick="toggle('bananas')">Bananas</div>
+  <div class="category" onclick="toggle('collars')">Anti-Seal Collars</div>
+  <div class="category" onclick="toggle('tools')">Pocket Knives</div>
+</div>
+
+<!-- HELMETS -->
+<div id="helmets" class="subgroup">
+  <div class="card" onclick="openM('h1')"><img src="casco_emperador.jpg"><div class="card-content"><h4>Emperor</h4></div></div>
+  <div class="card" onclick="openM('h2')"><img src="casco_rey.jpg"><div class="card-content"><h4>King</h4></div></div>
+  <div class="card" onclick="openM('h3')"><img src="casco_adelia.jpg"><div class="card-content"><h4>Adélie</h4></div></div>
+  <div class="card" onclick="openM('h4')"><img src="casco_papua.jpg"><div class="card-content"><h4>Gentoo</h4></div></div>
+  <div class="card" onclick="openM('h5')"><img src="casco_magallanes.jpg"><div class="card-content"><h4>Magellanic</h4></div></div>
+</div>
+
+<!-- WINGS -->
+<div id="wings" class="subgroup">
+  <div class="card" onclick="openM('w1')"><img src="ala_adelia.jpg"><div class="card-content"><h4>Adélie</h4></div></div>
+  <div class="card" onclick="openM('w2')"><img src="ala_papua.jpg"><div class="card-content"><h4>Gentoo</h4></div></div>
+  <div class="card" onclick="openM('w3')"><img src="ala_rey.jpg"><div class="card-content"><h4>King</h4></div></div>
+  <div class="card" onclick="openM('w4')"><img src="ala_emperador.jpg"><div class="card-content"><h4>Emperor</h4></div></div>
+  <div class="card" onclick="openM('w5')"><img src="ala_magallanes.jpg"><div class="card-content"><h4>Magellanic</h4></div></div>
+</div>
+
+<!-- BANANAS -->
+<div id="bananas" class="subgroup">
+  <div class="card" onclick="openM('b1')"><img src="banano_adelia.jpg"><div class="card-content"><h4>Adélie</h4></div></div>
+  <div class="card" onclick="openM('b2')"><img src="banano_papua.jpg"><div class="card-content"><h4>Gentoo</h4></div></div>
+  <div class="card" onclick="openM('b3')"><img src="banano_rey.jpg"><div class="card-content"><h4>King</h4></div></div>
+  <div class="card" onclick="openM('b4')"><img src="banano_emperador.jpg"><div class="card-content"><h4>Emperor</h4></div></div>
+  <div class="card" onclick="openM('b5')"><img src="banano_magallanes.jpg"><div class="card-content"><h4>Magellanic</h4></div></div>
+</div>
+
+<!-- COLLARS -->
+<div id="collars" class="subgroup">
+  <div class="card" onclick="openM('c1')"><img src="collar_adelia.jpg"><div class="card-content"><h4>Adélie</h4></div></div>
+  <div class="card" onclick="openM('c2')"><img src="collar_papua.jpg"><div class="card-content"><h4>Gentoo</h4></div></div>
+  <div class="card" onclick="openM('c3')"><img src="collar_rey.jpg"><div class="card-content"><h4>King</h4></div></div>
+  <div class="card" onclick="openM('c4')"><img src="collar_emperador.jpg"><div class="card-content"><h4>Emperor</h4></div></div>
+  <div class="card" onclick="openM('c5')"><img src="collar_magallanes.jpg"><div class="card-content"><h4>Magellanic</h4></div></div>
+</div>
+
+<!-- TOOLS -->
+<div id="tools" class="subgroup">
+  <div class="card" onclick="openM('t1')"><img src="cortaplumas_adelia.jpg"><div class="card-content"><h4>Adélie</h4></div></div>
+  <div class="card" onclick="openM('t2')"><img src="cortaplumas_papua.jpg"><div class="card-content"><h4>Gentoo</h4></div></div>
+  <div class="card" onclick="openM('t3')"><img src="cortaplumas_rey.jpg"><div class="card-content"><h4>King</h4></div></div>
+  <div class="card" onclick="openM('t4')"><img src="cortaplumas_emperador.jpg"><div class="card-content"><h4>Emperor</h4></div></div>
+  <div class="card" onclick="openM('t5')"><img src="cortaplumas_magallanes.jpg"><div class="card-content"><h4>Magellanic</h4></div></div>
+</div>
+
+<!-- MODALS -->
+<div id="h1" class="modal"><div class="modal-content"><span class="close" onclick="closeM('h1')">&times;</span><img src="pingüino_emperador_casco.jpg"></div></div>
+<div id="h2" class="modal"><div class="modal-content"><span class="close" onclick="closeM('h2')">&times;</span><img src="pingüino_rey_casco.jpg"></div></div>
+<div id="h3" class="modal"><div class="modal-content"><span class="close" onclick="closeM('h3')">&times;</span><img src="pingüino_adelia_casco.jpg"></div></div>
+<div id="h4" class="modal"><div class="modal-content"><span class="close" onclick="closeM('h4')">&times;</span><img src="pingüino_papua_casco.jpg"></div></div>
+<div id="h5" class="modal"><div class="modal-content"><span class="close" onclick="closeM('h5')">&times;</span><img src="pingüino_magallanes_casco.jpg"></div></div>
+
+<div id="w1" class="modal"><div class="modal-content"><span class="close" onclick="closeM('w1')">&times;</span><img src="pingüino_adelia_ala.jpg"></div></div>
+<div id="w2" class="modal"><div class="modal-content"><span class="close" onclick="closeM('w2')">&times;</span><img src="pingüino_papua_ala.jpg"></div></div>
+<div id="w3" class="modal"><div class="modal-content"><span class="close" onclick="closeM('w3')">&times;</span><img src="pingüino_rey_ala.jpg"></div></div>
+<div id="w4" class="modal"><div class="modal-content"><span class="close" onclick="closeM('w4')">&times;</span><img src="pingüino_emperador_ala.jpg"></div></div>
+<div id="w5" class="modal"><div class="modal-content"><span class="close" onclick="closeM('w5')">&times;</span><img src="pingüino_magallanes_ala.jpg"></div></div>
+
+<div id="b1" class="modal"><div class="modal-content"><span class="close" onclick="closeM('b1')">&times;</span><img src="pingüino_adelia_banano.jpg"></div></div>
+<div id="b2" class="modal"><div class="modal-content"><span class="close" onclick="closeM('b2')">&times;</span><img src="pingüino_papua_banano.jpg"></div></div>
+<div id="b3" class="modal"><div class="modal-content"><span class="close" onclick="closeM('b3')">&times;</span><img src="pingüino_rey_banano.jpg"></div></div>
+<div id="b4" class="modal"><div class="modal-content"><span class="close" onclick="closeM('b4')">&times;</span><img src="pingüino_emperador_banano.jpg"></div></div>
+<div id="b5" class="modal"><div class="modal-content"><span class="close" onclick="closeM('b5')">&times;</span><img src="pingüino_magallanes_banano.jpg"></div></div>
+
+<div id="c1" class="modal"><div class="modal-content"><span class="close" onclick="closeM('c1')">&times;</span><img src="pingüino_adelia_collar.jpg"></div></div>
+<div id="c2" class="modal"><div class="modal-content"><span class="close" onclick="closeM('c2')">&times;</span><img src="pingüino_papua_collar.jpg"></div></div>
+<div id="c3" class="modal"><div class="modal-content"><span class="close" onclick="closeM('c3')">&times;</span><img src="pingüino_rey_collar.jpg"></div></div>
+<div id="c4" class="modal"><div class="modal-content"><span class="close" onclick="closeM('c4')">&times;</span><img src="pingüino_emperador_collar.jpg"></div></div>
+<div id="c5" class="modal"><div class="modal-content"><span class="close" onclick="closeM('c5')">&times;</span><img src="pingüino_magallanes_collar.jpg"></div></div>
+
+<div id="t1" class="modal"><div class="modal-content"><span class="close" onclick="closeM('t1')">&times;</span><img src="pingüino_adelia_cortaplumas.jpg"></div></div>
+<div id="t2" class="modal"><div class="modal-content"><span class="close" onclick="closeM('t2')">&times;</span><img src="pingüino_papua_cortaplumas.jpg"></div></div>
+<div id="t3" class="modal"><div class="modal-content"><span class="close" onclick="closeM('t3')">&times;</span><img src="pingüino_rey_cortaplumas.jpg"></div></div>
+<div id="t4" class="modal"><div class="modal-content"><span class="close" onclick="closeM('t4')">&times;</span><img src="pingüino_emperador_cortaplumas.jpg"></div></div>
+<div id="t5" class="modal"><div class="modal-content"><span class="close" onclick="closeM('t5')">&times;</span><img src="pingüino_magallanes_cortaplumas.jpg"></div></div>
+
+</section>
+
+<script>
+function toggle(id){
+  document.querySelectorAll('.subgroup').forEach(g=>{
+    if(g.id!==id) g.classList.remove('active');
+  });
+  document.getElementById(id).classList.toggle('active');
+}
+function openM(id){document.getElementById(id).style.display='block';}
+function closeM(id){document.getElementById(id).style.display='none';}
+window.onclick=e=>{
+  if(e.target.classList.contains('modal')) e.target.style.display='none';
+};
+</script>
+
+</body>
+</html>
